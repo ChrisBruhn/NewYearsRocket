@@ -1,5 +1,5 @@
-// lyde: https://www.epidemicsound.com/sound-effects/fireworks/ //<>// //<>// //<>// //<>// //<>// //<>//
-class Raket {
+// lyde: https://www.epidemicsound.com/sound-effects/fireworks/ //<>// //<>// //<>// //<>// //<>// //<>// //<>//
+class Rocket {
   PVector location = new PVector(0, height);
   PVector velocity;
 
@@ -19,20 +19,20 @@ class Raket {
 
 
   //construktor
-  Raket() {
+  Rocket() {
     velocity = new PVector(angle, -3);
   }
 
 
 
-  void visRaket() {
-    fill(0);
+  void displayRocket() {
+    fill(190);
     //noStroke();
     circle(location.x, location.y, dia);
     stroke(2);
   }
 
- //<>//
+
 
 
   void playFireSound() {
@@ -43,12 +43,12 @@ class Raket {
 
   void playExplodingSound() {
     if (!soundPayed && !lift) {
-      raket2.play();
+      Rocket2.play();
       soundPayed = true;
     }
   }
 
-  void moveRaket() {
+  void moveRocket() {
 
     location.add(velocity);
     if (location.y < gram) { // hvis  jeg har nået toppen og ikke er færdig
@@ -59,7 +59,7 @@ class Raket {
   }
 
 
-  //er raketten færdig??
+  //er Rocketten færdig??
   boolean done() {
     if (location.y<gram ) {
       return true;
@@ -87,13 +87,13 @@ class Raket {
     println(lift);
   }
 
-  void flyvRaket() {
+  void flyRocket() {
     playFireSound();
-    moveRaket();
+    moveRocket();
     if (done()) {
-      eksploderRaket();
+      eksploderRocket();
     } else {
-      visRaket();
+      displayRocket();
     }
     playExplodingSound();
   }
@@ -117,15 +117,14 @@ class Raket {
     dia=5;
   }
 
-
-
-  void eksploderRaket() {
+  void eksploderRocket() {
   } // made to overwrite
+  
 }
 /*************************************/
 
-class Raket1 extends Raket {
-  void eksploderRaket() {
+class Rocket1 extends Rocket {
+  void eksploderRocket() {
     noStroke();
     if (dia < 500) {
       fill(r, g, b, alfa);
@@ -139,9 +138,9 @@ class Raket1 extends Raket {
 }
 /*************************************/
 
-class Raket2 extends Raket {
+class Rocket2 extends Rocket {
 
-  void eksploderRaket() {
+  void eksploderRocket() {
 
     pushMatrix();
     translate(location.x, location.y);
@@ -160,11 +159,11 @@ class Raket2 extends Raket {
 
 /*************************************/
 
-class Raket3 extends Raket {
+class Rocket3 extends Rocket {
 
 
 
-  void eksploderRaket() {
+  void eksploderRocket() {
 
     pushMatrix();
     translate(location.x, location.y);
